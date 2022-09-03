@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block content%}
+        <main>
+            <header class="site-header site-contact-header">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-10 col-12 mx-auto">
+                            <h1 class="text-white">Привет</h1>
+
+                            <strong class="text-white">Мы будем рады услышать Вас про нас!</strong>
+                        </div>
+
+                    </div>
+                </div>
+                
+                <div class="overlay"></div>
+            </header>
+
+            <section class="contact section-padding">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12">
+                            <h2 class="mb-4">Связаться с нами</h2>
+                        </div>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                        <div class="col-lg-6 col-12">
+                            <form class="custom-form contact-form row" action="" method="post" role="form">
+                                <div class="col-lg-6 col-6">
+                                    <label for="contact-name" class="form-label">ФИО</label>
+
+                                    <input type="text" name="contact-name" id="contact-name" class="form-control" placeholder="Введите Ваше ФИО" required>
+                                </div>
+
+                                <div class="col-lg-6 col-6">
+                                    <label for="contact-phone" class="form-label">Номер телефона</label>
+
+                                    <input type="telephone" name="contact-phone" id="contact-phone" pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}" class="form-control" placeholder="+7 938 000-00-00">
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="contact-email" class="form-label">Email</label>
+
+                                    <input type="email" name="contact-email" id="contact-email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email" required="">
+
+                                    <label for="contact-message" class="form-label">Сообщение</label>
+
+                                    <textarea class="form-control" rows="5" id="contact-message" name="contact-message" placeholder="Введите Ваше сообщение"></textarea>
+                                </div>
+                                <br>
+                                <div class="col-lg-5 col-12 ms-auto">
+                                    <button type="submit" class="form-control">Отправить</button>
+                                </div>
+                                <br>
+                                {% for message in messages %}
+                                <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    {{ message | safe }}
+                                </div>
+                                {% endfor %}
+                            </form>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+{% endblock %}

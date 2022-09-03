@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block content%}
+
+    <div class="container-fluid bg-light py-5">
+        <div class="col-md-6 m-auto text-center">
+            <h1 class="h1">Войдите в свой аккаунт</h1>
+        </div>
+    </div>
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="container py-5">
+        <div class="row py-5">
+            <form class="col-md-9 m-auto" method="post" role="form">
+                {{ form.as_p }}
+                <div class="row">
+                    <div class="col text-end mt-2">
+                        <a href="{% url 'login' %}"><p4>Зарегистрированы?</p4></a>
+                        <button type="submit" class="btn btn-success btn-lg px-3">Готово!</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
